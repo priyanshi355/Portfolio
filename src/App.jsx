@@ -238,7 +238,6 @@ const Projects = () => {
 const Certifications = () => {
   const certs = [
     { title: "Alpha (DSA with Java)", issuer: "Apna College", date: "2024", icon: <Layers />, file: "/certs/apna_dsa.pdf" },
-    { title: "MERN Stack / Full-Stack", issuer: "Apna College", date: "2024", icon: <BarChart />, file: "/certs/mern_cert.pdf" },
     { title: "OpScape 2.0 - IIM Trichy", issuer: "Indian Institute of Management", date: "2024", icon: <CheckCircle />, file: "/certs/iim_trichy.pdf" }
   ];
 
