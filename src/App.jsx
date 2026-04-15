@@ -14,7 +14,9 @@ import {
   CheckCircle,
   BarChart,
   Layers,
-  ArrowRight
+  ArrowRight,
+  Menu,
+  X
 } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
@@ -26,20 +28,54 @@ const Background = () => (
   </div>
 );
 
-const Navbar = () => (
-  <nav className="navbar">
-    <div className="container flex justify-between items-center">
-      <div className="logo font-bold text-xl gradient-text">Priyanshi.</div>
-      <ul className="flex gap-2 desktop-nav">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-);
+const Navbar = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const navLinks = [
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Certifications", href: "#certifications" },
+    { name: "Contact", href: "#contact" },
+  ];
+
+  return (
+    <nav className="navbar">
+      <div className="container flex justify-between items-center">
+        <div className="logo font-bold text-xl gradient-text">Priyanshi.</div>
+        
+        {/* Desktop Links */}
+        <ul className="flex gap-2 desktop-nav">
+          {navLinks.map((link) => (
+            <li key={link.name}><a href={link.href}>{link.name}</a></li>
+          ))}
+        </ul>
+
+        {/* Mobile Toggle */}
+        <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X /> : <Menu />}
+        </button>
+
+        {/* Mobile Drawer */}
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mobile-drawer"
+          >
+            <ul className="mobile-nav">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} onClick={() => setIsOpen(false)}>{link.name}</a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </div>
+    </nav>
+  );
+};
 
 const Hero = () => (
   <section className="hero-section text-center">
