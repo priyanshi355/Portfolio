@@ -155,10 +155,14 @@ section {
 .skill-tag { background: var(--secondary); padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.8125rem; font-weight: 500; border: 1px solid var(--border); }
 
 /* Projects */
-.project-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); border-bottom: 4px solid var(--accent); }
-.project-content { padding: 2.5rem; }
-.badge-tag { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); opacity: 0.8; }
-.link-icon { font-weight: 700; color: var(--accent); font-size: 0.9rem; }
+.project-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); border-bottom: 5px solid var(--accent); transition: var(--transition); display: flex; flex-direction: column; }
+.project-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+.project-content { padding: 3rem; flex: 1; display: flex; flex-direction: column; }
+.project-list { margin: 1.5rem 0; padding-left: 1.25rem; }
+.project-list li { font-size: 0.9375rem; color: var(--text-muted); margin-bottom: 0.5rem; position: relative; list-style: disc; }
+.badge-tag { font-size: 0.75rem; font-weight: 700; color: var(--accent); background: var(--secondary); padding: 0.25rem 0.75rem; border-radius: 6px; }
+.link-icon { font-weight: 700; color: var(--text-main); font-size: 0.95rem; border-bottom: 2px solid var(--accent); margin-top: auto; align-self: flex-start; }
+.link-icon:hover { color: var(--accent); border-color: var(--text-main); }
 
 /* Contact */
 .contact-section { padding-bottom: 8rem; }
@@ -198,6 +202,8 @@ section {
 .cert-card { background: white; padding: 2rem; border-radius: 16px; border: 1px solid var(--border); transition: var(--transition); display: flex; flex-direction: column; align-items: center; text-align: center; }
 .cert-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
 .cert-icon { width: 60px; height: 60px; background: var(--secondary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 1.5rem; }
+
+.clickable { cursor: pointer; }
 
 .text-xl { font-size: 1.25rem; }
 

@@ -169,16 +169,24 @@ const Projects = () => {
   const projects = [
     {
       title: "Lost & Found Platform",
-      desc: "A MERN application for reporting and recovering lost items at BBDU. Features secure auth, real-time database, and search filtering.",
-      challenges: "Implemented role-based access control and integrated cloud database with complex filtering.",
-      tags: ["MongoDB", "Express", "React", "Node"],
+      desc: "An end-to-end full-stack solution designed for the BBDU student community to facilitate the quick recovery and reporting of personal belongings. It streamlines the entire lost-and-found lifecycle through a robust and secure digital interface.",
+      features: [
+        "Secure User Authentication using JWT and specialized Admin Dashboard.",
+        "Real-time database integration for instant listing updates and search.",
+        "Advanced search and multi-category filtering for efficient item tracking."
+      ],
+      tags: ["MongoDB", "Express", "React", "Node.js"],
       link: "https://github.com/priyanshi355"
     },
     {
       title: "Truth Card AI",
-      desc: "AI-powered truth analysis application using a custom model to estimate statement veracity. Clean UI for insightful results.",
-      challenges: "Optimized API response time and ensured accurate interpretation of model probability outputs.",
-      tags: ["React", "Python", "AI/ML", "REST API"],
+      desc: "An innovative AI-powered application that leverages machine learning to analyze and estimate the veracity of user-provided statements. It provides an insightful and modern UI to interpret complex model probabilities.",
+      features: [
+        "Custom-trained ML model integration via a high-performance REST API.",
+        "Real-time statement processing with descriptive truthfulness estimation.",
+        "Responsive React frontend designed for clear and insightful data visualization."
+      ],
+      tags: ["React", "Python", "Flask", "AI/ML"],
       link: "https://github.com/priyanshi355"
     }
   ];
@@ -187,33 +195,36 @@ const Projects = () => {
     <section id="projects" className="bg-secondary">
       <div className="container">
         <div className="section-head">
-          <h2 className="section-title">Featured Work</h2>
-          <p className="section-subtitle">Deep dives into my development projects.</p>
+          <h2 className="section-title">Featured Projects</h2>
+          <p className="section-subtitle">A deep dive into my recent technical developments and problem-solving approaches.</p>
         </div>
         <div className="grid grid-2 gap-4">
           {projects.map((proj, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              whileHover={{ y: -8 }}
               className="project-card shadow-md"
             >
               <div className="project-content">
-                <h3 className="mb-2">{proj.title}</h3>
+                <h3 className="mb-4 text-xl">{proj.title}</h3>
                 <p className="text-muted mb-4">{proj.desc}</p>
-                <div className="mb-4">
-                  <small className="font-bold color-accent block mb-1">Key Challenge:</small>
-                  <p className="text-sm">{proj.challenges}</p>
-                </div>
-                <div className="flex flex-wrap gap-2 mb-6">
+                
+                <ul className="project-list">
+                  {proj.features.map((feature, i) => (
+                    <li key={i}>{feature}</li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-2 mb-8 mt-4">
                   {proj.tags.map((tag, i) => (
                     <span key={i} className="badge-tag">{tag}</span>
                   ))}
                 </div>
-                <a href={proj.link} target="_blank" className="link-icon flex items-center gap-1">
-                  View Repository <ExternalLink size={14} />
+                
+                <a href={proj.link} target="_blank" className="link-icon flex items-center gap-2">
+                  View Source Code <ExternalLink size={16} />
                 </a>
               </div>
             </motion.div>
@@ -227,7 +238,7 @@ const Projects = () => {
 const Certifications = () => {
   const certs = [
     { title: "Alpha (DSA with Java)", issuer: "Apna College", date: "2024", icon: <Layers />, file: "/certs/apna_dsa.pdf" },
-    { title: "MERN Stack / Full-Stack", issuer: "Apna College", date: "2024", icon: <BarChart />, file: "#" },
+    { title: "MERN Stack / Full-Stack", issuer: "Apna College", date: "2024", icon: <BarChart />, file: "/certs/mern_cert.pdf" },
     { title: "OpScape 2.0 - IIM Trichy", issuer: "Indian Institute of Management", date: "2024", icon: <CheckCircle />, file: "/certs/iim_trichy.pdf" }
   ];
 
