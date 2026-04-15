@@ -49,7 +49,7 @@ const Hero = () => (
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, cubicBezier: [0.16, 1, 0.3, 1] }}
       >
-        <span className="badge">🚀 Internships 2025</span>
+        <span className="badge">✨ Software Engineer Portfolio</span>
         <h1 className="hero-title">Crafting the Next <br/><span className="gradient-text">Generation of Web</span></h1>
         <p className="hero-desc">
           I'm <strong>Priyanshi Yadav</strong>, an aspiring Full-Stack Developer and 3rd-year CS student at BBDU, dedicated to creating high-performance, user-centric digital experiences.
@@ -275,29 +275,71 @@ const Certifications = () => {
   );
 };
 
-const Contact = () => (
-  <section id="contact" className="container">
-    <div className="contact-card shadow-premium">
-      <div className="grid grid-2 items-center gap-8">
-        <div>
-          <h2 className="text-white mb-4" style={{fontSize: '3.5rem'}}>Let's Build <br/><span className="gradient-text">Something Grand.</span></h2>
-          <p className="text-muted mb-8" style={{color: '#94a3b8'}}>Currently available for internship opportunities starting Summer 2025.</p>
-          <div className="flex gap-4">
-            <a href="https://linkedin.com/in/priyanshi-yadav05" target="_blank" className="social-link"><FaLinkedin size={22} /></a>
-            <a href="https://github.com/priyanshi355" target="_blank" className="social-link"><FaGithub size={22} /></a>
-            <a href="https://leetcode.com/priyanshiyadav25_" target="_blank" className="social-link"><SiLeetcode size={22} /></a>
-            <a href="mailto:priyanshi.yadav@example.com" className="social-link"><Mail size={22} /></a>
+const Contact = () => {
+  const [status, setStatus] = React.useState('idle'); // idle, loading, success
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus('loading');
+    
+    // Simulate sending or use EmailJS
+    // Import: import emailjs from 'emailjs-com';
+    // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
+    
+    setTimeout(() => {
+      setStatus('success');
+      e.target.reset();
+    }, 1500);
+  };
+
+  return (
+    <section id="contact" className="container">
+      <div className="contact-card shadow-premium">
+        {status === 'success' ? (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-center py-8"
+          >
+            <div className="success-icon mb-6">✅</div>
+            <h2 className="text-white mb-4">Message Sent!</h2>
+            <p className="text-muted-light mb-8">Thank you, Priyanshi will get back to you soon.</p>
+            <button onClick={() => setStatus('idle')} className="btn btn-secondary">Send Another</button>
+          </motion.div>
+        ) : (
+          <div className="grid grid-2 items-center gap-8">
+            <div>
+              <h2 className="text-white mb-4" style={{fontSize: '3.5rem'}}>Let's Build <br/><span className="gradient-text">Something Grand.</span></h2>
+              <p className="text-muted mb-8" style={{color: '#94a3b8'}}>Have a project in mind or just want to say hi? I'm always open to discussing new opportunities.</p>
+              <div className="flex gap-4">
+                <a href="https://linkedin.com/in/priyanshi-yadav05" target="_blank" className="social-link"><FaLinkedin size={22} /></a>
+                <a href="https://github.com/priyanshi355" target="_blank" className="social-link"><FaGithub size={22} /></a>
+                <a href="https://leetcode.com/priyanshiyadav25_" target="_blank" className="social-link"><SiLeetcode size={22} /></a>
+                <a href="mailto:priyanshi.yadav@example.com" className="social-link"><Mail size={22} /></a>
+              </div>
+            </div>
+            <div className="form-container">
+              <form onSubmit={handleSubmit} className="premium-form">
+                <div className="form-group">
+                  <input type="text" name="user_name" placeholder="Your Name" required />
+                </div>
+                <div className="form-group">
+                  <input type="email" name="user_email" placeholder="Your Email" required />
+                </div>
+                <div className="form-group">
+                  <textarea name="message" placeholder="How can I help you?" rows="4" required></textarea>
+                </div>
+                <button type="submit" className="mail-btn w-full" disabled={status === 'loading'}>
+                  {status === 'loading' ? 'Sending...' : 'Send Message'} <ArrowRight size={20} />
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-        <div className="text-right-desktop">
-          <a href="mailto:priyanshi.yadav@example.com" className="mail-btn">
-            Send Message <ArrowRight size={20} />
-          </a>
-        </div>
+        )}
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const Footer = () => (
   <footer className="footer py-8">
